@@ -9,7 +9,7 @@
        2.${},普通的Statement，字符串直接拼接，不可以防止sql注入，一个参数的时候，必须使用${value}接收参数
      -->
     <select id="queryUserByTableName" resultType="com.zhuky.mybatis.pojo.User">
-        select * from ${tableName}
+        select * from #{tableName}
     </select>
 
     <select id="login" resultType="com.zhuky.mybatis.pojo.User">
