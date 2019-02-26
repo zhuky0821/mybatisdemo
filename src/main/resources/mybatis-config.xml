@@ -11,8 +11,8 @@
         <property name="password" value="1"/>
     </properties>
 
-    <!--开启驼峰匹配-->
     <settings>
+        <!--开启驼峰匹配-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
@@ -47,6 +47,7 @@
         <mapper resource="mapper/MyMapper.xml"/>
         <mapper resource="mapper/UserDaoMapper.xml"/>
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -48,6 +48,13 @@ public class UserMapperTest {
     @Test
     public void testQueryUserById() {
         System.out.println(this.userMapper.queryUserById(1l));
+
+        User user = new User();
+        user.setId("20");
+        user.setName("美女");
+        userMapper.updateUser(user);
+
+        System.out.println(this.userMapper.queryUserById(1l));
     }
 
     @Test
