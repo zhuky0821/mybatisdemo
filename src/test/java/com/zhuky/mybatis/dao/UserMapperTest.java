@@ -42,7 +42,7 @@ public class UserMapperTest {
 
     @Test
     public void testLogin() {
-        System.out.println(this.userMapper.login("hj", "123456"));
+        System.out.println(this.userMapper.login("zhu1", "1"));
     }
 
     @Test
@@ -92,5 +92,22 @@ public class UserMapperTest {
     @Test
     public void testQueryCount(){
         System.out.println(this.userMapper.queryCount());
+    }
+
+    @Test
+    public void testQueryUserList(){
+        List<User> users = this.userMapper.queryUserList("i");
+        for(User user : users){
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testQueryUserByIds(){
+        String[] ids = new String[]{"1", "2"};
+        List<User> users = this.userMapper.queryUserByIds(ids);
+        for (User user:users){
+            System.out.println(user);
+        }
     }
 }

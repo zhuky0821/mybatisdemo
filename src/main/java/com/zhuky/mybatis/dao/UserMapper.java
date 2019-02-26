@@ -57,4 +57,19 @@ public interface UserMapper {
      * @return
      */
     public int queryCount();
+
+    /**
+     * 根据名称查找
+     * @param name
+     * @return
+     */
+    public List<User> queryUserList(@Param("name") String name);
+
+    /**
+     * 查找多个id的用户
+     * @param ids
+     * @return
+     */
+    public List<User> queryUserByIds(@Param("ids") String[] ids);
+
 }
