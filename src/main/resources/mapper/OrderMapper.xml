@@ -26,4 +26,33 @@
         select * from tb_order o left join tb_user u on o.user_id = u.id where o.order_number = #{number}
     </select>
 
+
+    <resultMap id="OrderUserDetailResultMap" type="com.zhuky.mybatis.pojo.Order" autoMapping="true">
+        <id column="id" property="id"/>
+        <!--
+            association:完成子对象的映射
+            property：子对象在父对象中的属性名
+            javaType:子对象的java类型
+            autoMapping：完成子对象的自动映射，若开启驼峰，则按驼峰匹配
+        -->
+        <association property="user" javaType="com.zhuky.mybatis.pojo.User" autoMapping="true">
+            <id property="id" column="user_id"/>
+        </association>
+        <!--
+            property : 子对象在父对象中的属性名
+            javaType:子对象的java类型
+            ofType:集合中对象的java类型
+        -->
+        <collection property="detailList" javaType="List" ofType="com.zhuky.mybatis.pojo.OrderDetail" autoMapping="true">
+            <id property="id" column="id"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryOrderWithUserAndDetailByOrderNumber" resultMap="OrderUserDetailResultMap">
+        select * from tb_order o
+           left join tb_user u on o.user_id=u.id
+           left join tb_orderdetail od on o.id=od.order_id
+           where o.order_number = #{number}
+    </select>
+
 </mapper>

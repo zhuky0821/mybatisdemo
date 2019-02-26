@@ -9,7 +9,7 @@ public interface OrderMapper {
 
     Order queryOrderWithUserByOrderNumber(@Param("number") String number);
 
-
+    Order queryOrderWithUserAndDetailByOrderNumber(@Param("number") String number);
 
 
 }
