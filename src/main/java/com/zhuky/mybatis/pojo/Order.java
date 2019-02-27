@@ -5,6 +5,11 @@ import java.util.List;
 public class Order {
     private int id;
     private Long userId;
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
     private String orderNumber;
     private User user;
 

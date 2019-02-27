@@ -14,6 +14,12 @@
     <settings>
         <!--开启驼峰匹配-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--teue启用时，当延迟加载开启时访问对象中一个懒对象属性时，将完全加载所有懒对象-->
+        <!--false，当延迟加载时，按需加载对象属性（即访问一个懒对象属性，不会加载对象中的其他懒对象属性），默认为true-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+
     </settings>
 
     <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
@@ -43,11 +49,11 @@
         </environment>
     </environments>
 
-    <mappers>
-        <mapper resource="mapper/MyMapper.xml"/>
-        <mapper resource="mapper/UserDaoMapper.xml"/>
-        <mapper resource="mapper/UserMapper.xml"/>
-        <mapper resource="mapper/OrderMapper.xml"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--<mapper resource="mapper/MyMapper.xml"/>-->
+        <!--<mapper resource="mapper/UserDaoMapper.xml"/>-->
+        <!--<mapper resource="mapper/UserMapper.xml"/>-->
+        <!--<mapper resource="mapper/OrderMapper.xml"/>-->
+    <!--</mappers>-->
 
 </configuration>

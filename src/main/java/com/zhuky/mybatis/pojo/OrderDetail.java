@@ -5,6 +5,7 @@ public class OrderDetail {
     private Integer orderId;
     private Double totalPrice;
     private Integer status;
+    private Item item;
 
     @Override
     public String toString() {
@@ -13,6 +14,7 @@ public class OrderDetail {
                 ", orderId=" + orderId +
                 ", totalPrice=" + totalPrice +
                 ", status=" + status +
+                ", item=" + item +
                 '}';
     }
 }

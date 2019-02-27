@@ -1,5 +1,6 @@
 package com.zhuky.mybatis.dao;
 
+import com.zhuky.mybatis.pojo.Order;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,5 +40,23 @@ public class OrderMapperTest {
     public void testQueryOrderWithUserByOrderNumber(){
         System.out.println(this.orderMapper.queryOrderWithUserByOrderNumber("201807010001"));
         System.out.println(this.orderMapper.queryOrderWithUserByOrderNumber("201807010001").getUser());
+    }
+
+    @Test
+    public void testQueryOrderWithUserAndDetailByOrderNumber(){
+        System.out.println(this.orderMapper.queryOrderWithUserAndDetailByOrderNumber("201807010001"));
+    }
+
+    @Test
+    public void testQueryOrderWithUserAndDetailItemByOrderNumber(){
+        System.out.println(this.orderMapper.queryOrderWithUserAndDetailItemByOrderNumber("201807010001"));
+    }
+
+    @Test
+    public void testQueryOrderAndUserByOrderNumberLazy(){
+        Order order = orderMapper.queryOrderAndUserByOrderNumberLazy("201807010001");
+        System.out.println(order.getOrderNumber());
+        System.out.println("================================");
+        System.out.println(order.getUser());
     }
 }

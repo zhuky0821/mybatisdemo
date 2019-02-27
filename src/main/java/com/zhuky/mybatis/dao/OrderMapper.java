@@ -11,5 +11,7 @@ public interface OrderMapper {
 
     Order queryOrderWithUserAndDetailByOrderNumber(@Param("number") String number);
 
+    Order queryOrderWithUserAndDetailItemByOrderNumber(@Param("number") String number);
 
+    public Order queryOrderAndUserByOrderNumberLazy(@Param("number") String number);
 }

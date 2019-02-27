@@ -55,4 +55,37 @@
            where o.order_number = #{number}
     </select>
 
+    <resultMap id="OrderUserDetailItemResultMap" type="com.zhuky.mybatis.pojo.Order" autoMapping="true">
+        <association property="user" javaType="com.zhuky.mybatis.pojo.User" autoMapping="true">
+            <id column="user_id" property="id"/>
+        </association>
+        <collection property="detailList" javaType="List" ofType="com.zhuky.mybatis.pojo.OrderDetail" autoMapping="true">
+            <id column="id" property="id"/>
+            <association property="item" javaType="com.zhuky.mybatis.pojo.Item" autoMapping="true">
+                <id column="id" property="id"/>
+            </association>
+        </collection>
+    </resultMap>
+    
+    <select id="queryOrderWithUserAndDetailItemByOrderNumber" resultMap="OrderUserDetailItemResultMap">
+        select * ,od.id as detail_id from tb_order o
+           left join tb_user u on o.user_id=u.id
+           left join tb_orderdetail od on o.id=od.order_id
+           left join tb_item i on od.item_id=i.id
+           where o.order_number = #{number}
+    </select>
+
+    <resultMap id="LazyOrderUserResultMap" type="com.zhuky.mybatis.pojo.Order" autoMapping="true">
+        <id property="id" column="id"/>
+        <!--select:子查询的statement的id，column：子查询中的条件-->
+        <association property="user" javaType="com.zhuky.mybatis.pojo.User" autoMapping="true" select="queryUserById" column="user_id"/>
+    </resultMap>
+    <select id="queryOrderAndUserByOrderNumberLazy" resultMap="LazyOrderUserResultMap">
+        select * from tb_order where order_number = #{number}
+    </select>
+
+    <select id="queryUserById" resultType="com.zhuky.mybatis.pojo.User">
+        select * from tb_user where id=#{id}
+    </select>
+
 </mapper>
